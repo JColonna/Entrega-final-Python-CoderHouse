@@ -1,0 +1,14 @@
+
+{% extends "Appfinal/padre.html" %}
+{ load static  }
+
+
+{% block contenido %}
+
+    <form action="" method="POST">
+        {%csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Registrarme">
+    </form>
+
+{%endblock%}
