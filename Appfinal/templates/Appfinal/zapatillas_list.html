@@ -1,0 +1,18 @@
+
+{% extends "Appfinal/padre.html" %}
+{ load static  }
+
+
+{% block contenido %}
+<h1>Nuestras Zapatillas</h1>
+
+{% for i in object_list%}
+<li>{{ i.tipo }}
+</li>
+<button><a href="{% url 'Zapatillas' i.id %}">Ver Mas</a></button>
+{% endfor %}
+<br><br><br>
+
+<button><a href="{% url 'Tienda' %}">Volver</a></button>
+
+{% endblock %}

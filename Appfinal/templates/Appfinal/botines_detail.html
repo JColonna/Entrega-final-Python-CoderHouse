@@ -3,3 +3,17 @@
 
 
 {% block contenido %}
+
+<h1>Detalle Botines</h1>
+
+<p>Nombre: <i> {{ i.tipo }}</i></p>
+<p>Talle: <i> {{ i.talle }}</i></p>
+<p>Stock: <i> {{ i.stock }}</i></p>
+<p>Precio: <i> {{ i.precio }}</i></p>
+<br><br>
+
+<button><a href="{% url 'ListBot' %}" >Volver a Botines</a></button>
+<br><br>
+<button><a href="{% url 'Tienda' %}">Volver a tienda virtual</a></button>
+
+{% endblock %}

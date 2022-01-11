@@ -43,13 +43,29 @@ def confirmacionContacto(request):
     return render(request, 'Appfinal/confirmacionContacto.html')
 
 
-class TiendaVirtual(ListView):
-    model = Indumentaria
-    template_name = 'Appfinal/tiendaVirtual_list.html'
-
-class ZapatillasDeportivas(DetailView):
+def tiendaVirtual(request):
+    return render(request, 'Appfinal/tiendaVirtual.html')
+#List
+class Zapatillas(ListView):
     model = ZapatillasDeportivas
-    template_name = 'Appfinal/zapatillasDeportivas_detail.html'
+    template_name = 'Appfinal/zapatillas_list.html'
+class Pantalon(ListView):
+    model = Pantalones
+    template_name = 'Appfinal/pantalones_list.html'
+class Remera(ListView):
+    model = Remeras
+    template_name = 'Appfinal/remeras_list.html'
+class Accesorio(ListView):
+    model = Accesorios
+    template_name = 'Appfinal/accesorios_list.html'
+class Botin(ListView):
+    model = Botines
+    template_name = 'Appfinal/botines_list.html'
+
+#detail
+class Zapatilla(DetailView):
+    model = ZapatillasDeportivas
+    template_name = 'Appfinal/zapatillas_detail.html'
 class Botines(DetailView):
     model = Botines
     template_name = 'Appfinal/botines_detail.html'

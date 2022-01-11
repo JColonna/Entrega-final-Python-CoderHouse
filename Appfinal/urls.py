@@ -1,7 +1,7 @@
 
 from django.urls import path
 from Appfinal import views
-from Appfinal.views import TiendaVirtual, ZapatillasDeportivas, Pantalones, Remeras, Botines,Accesorios
+from Appfinal.views import  Zapatilla, Zapatillas, ZapatillasDeportivas, Pantalones, Remeras, Botines,Accesorios, tiendaVirtual
 from  Appfinal.views import register
 from django.contrib.auth.views import LogoutView
 
@@ -9,8 +9,13 @@ urlpatterns = [
     path('index', views.index, name='Index'),
     path('contacto', views.formularioContacto, name='Contacto'),
     path('confirmacion', views.confirmacionContacto, name='Confirmacion'),
-    path('tiendavirtual/list', views.TiendaVirtual.as_view(), name="List"),
-    path(r'^(?P<pk>\d+)$', views.ZapatillasDeportivas.as_view(), name='Zapatillas'),
+    path('tiendavirtual', views.tiendaVirtual, name="Tienda"),
+    path('zapatillas/list', views.Zapatillas.as_view(), name="ListZapas"),
+    path('botines/list', views.Botin.as_view(), name="ListBot"),
+    path('remeras/list', views.Remera.as_view(), name="ListRem"),
+    path('pantalones/list', views.Pantalon.as_view(), name="ListPan"),
+    path('accesorios/list', views.Accesorio.as_view(), name="ListAcc"),
+    path(r'^(?P<pk>\d+)$', views.Zapatilla.as_view(), name='Zapatillas'),
     path(r'^(?P<pk>\d+)$', views.Pantalones.as_view(), name='Pantalones'),
     path(r'^(?P<pk>\d+)$', views.Remeras.as_view(), name='Remeras'),
     path(r'^(?P<pk>\d+)$', views.Botines.as_view(), name='Botines'),

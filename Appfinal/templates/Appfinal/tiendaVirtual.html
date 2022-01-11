@@ -1,0 +1,28 @@
+{% extends "Appfinal/padre.html" %}
+{ load static  }
+
+
+{% block contenido %}
+
+
+<h1>Nuestros productos</h1>
+
+
+    <li>Nuestas zapatillas</li>
+    <button><a href="{% url 'ListZapas' %}" >Ver Mas</a></button>
+    <li>Nuestros botines</li>
+    <button><a href="{% url 'ListBot' %}" >Ver Mas</a></button>
+    <li> Nuestros pantalones</li>
+    <button><a href="{% url 'ListPan' %}" >Ver Mas</a></button>
+    <li>Nuestras remeras</li>
+    <button><a href="{% url 'ListRem' %}" >Ver Mas</a></button>
+    <li>Nuestros accesorios</li>
+    <button><a href="{% url 'ListAcc' %}" >Ver Mas</a></button>
+
+
+
+    
+    
+
+
+{% endblock %}
