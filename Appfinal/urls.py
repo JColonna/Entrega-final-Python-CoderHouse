@@ -21,9 +21,18 @@ urlpatterns = [
     path(r'^(?P<pk>\d+)$', views.RemerasDetalle.as_view(), name='Remeras'),
     path(r'^(?P<pk>\d+)$', views.BotinesDetalle.as_view(), name='Botines'),
     path(r'^(?P<pk>\d+)$', views.AccesoriosDetalle.as_view(), name='Accesorios'),
+    path(r'^nuevo$', views.AccesorioCreate.as_view(), name= "NewAcces"),
+    path(r'^nuevo$', views.RemeraCreate.as_view(), name= "NewRem"),
+    path(r'^nuevo$', views.ZapatillaCreate.as_view(), name= "NewZapas"),
+    path(r'^nuevo$', views.BotinCreate.as_view(), name= "NewBotin"),
+    path(r'^nuevo$', views.PantalonCreate.as_view(), name= "NewPan"),
+    path(r'^editar/(?P<pk>\d+)$', views.AccesoriosUpdate.as_view(), name= "EditAcces"), 
+    path(r'^borrar/(?P<pk>\d+)$', views.AccesoriosDelete.as_view(), name= "DeleteAcces"), 
     path('register', views.register, name='Register' ),
     path('login', views.login_request, name='Login'),
     path('logout', LogoutView.as_view(template_name="Appfinal/logout.html"), name="Logout"),
+    path('editarperfil', views.editarPerfil, name='EditarPerfil')
+
     
 
 ]

@@ -9,7 +9,7 @@ from django.contrib.auth import login, logout, authenticate
 from Appfinal.forms import UserRegisterForm
 from django. contrib.auth.decorators import login_required
 from Appfinal.models import Indumentaria
-from Appfinal.forms import UserRegisterForm
+from Appfinal.forms import UserRegisterForm, UserEditForm
 
 # Create your views here.
 
@@ -82,7 +82,48 @@ class AccesoriosDetalle(DetailView):
     model = Accesorios
     template_name = 'Appfinal/accesorios_detail.html'
 
+#Crear 
+class AccesorioCreate(CreateView):
 
+    model = Accesorios
+    success_url = "../Appfinal/accesorios/list"
+    fields = ['tipo','talle', 'stock', 'precio']
+
+class RemeraCreate(CreateView):
+
+    model = Remeras
+    success_url = "../Appfinal/remeras/list"
+    fields = ['tipo','talle', 'stock', 'precio'] 
+class PantalonCreate(CreateView):
+
+    model = Pantalones
+    success_url = "../Appfinal/pantalones/list"
+    fields = ['tipo','talle', 'stock', 'precio'] 
+class BotinCreate(CreateView):
+
+    model = Botines
+    success_url = "../Appfinal/botines/list"
+    fields = ['tipo','talle', 'stock', 'precio'] 
+class ZapatillaCreate(CreateView):
+
+    model = ZapatillasDeportivas
+    success_url = "../Appfinal/zapatillas/list"
+    fields = ['tipo','talle', 'stock', 'precio']  
+
+#Editar
+class AccesoriosUpdate(UpdateView):
+
+      model = Accesorios
+      success_url = "../accesorios/list"
+      fields = ['tipo','talle', 'stock', 'precio'] 
+
+#Eliminar
+class AccesoriosDelete(DeleteView):
+
+      model = Accesorios
+      success_url = "../accesorios/list"
+
+#Login edit y register 
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -115,6 +156,31 @@ def login_request(request):
 
     form = AuthenticationForm() #Formulario vacio para hacer el login
     return render(request, "Appfinal/login.html", {"form":form})
+@login_required
+def editarPerfil(request):
 
+   usuario= request.user
 
+   if request.method == "POST":
+
+      miFormulario= UserEditForm(request.POST)  
+
+      if miFormulario.is_valid():
+
+         informacion= miFormulario.cleaned_data
+
+         usuario.email= informacion["email"] 
+         usuario.password1= informacion["password1"]
+         usuario.password2= informacion["password2"]
+         usuario.last_name= informacion["last_name"]
+         usuario.first_name= informacion["first_name"]
+
+         usuario.save()
+
+         return render(request, "Appfinal/inicio.html")
+
+   else:
+      miFormulario= UserEditForm(initial={"email":usuario.email})  
+
+   return render (request, "Appfinal/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario}) 
 

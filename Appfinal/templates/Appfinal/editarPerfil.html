@@ -1,0 +1,24 @@
+{% extends "Appfinal/padre.html" %}
+{ load static  }
+
+
+{% block contenido %}
+
+<form action="" method= "POST"> {% csrf_token  %}
+
+    <table>
+
+
+       {{ miFormulario.as_table  }}
+
+    </table>
+
+     
+     
+
+     <input type="submit" value= "EDITAR">
+
+
+ </form>
+
+ {% endblock %}
