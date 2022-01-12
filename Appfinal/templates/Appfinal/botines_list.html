@@ -9,6 +9,8 @@
 <li>{{ i.tipo }}
 </li>
 <button><a href="{% url 'Botines' i.id %}">Ver Mas</a></button>
+<button><a href="{% url 'EditBot' i.id %}">Editar</a></button>
+<button><a href="{% url 'DeleteBot' i.id %}">Eliminar</a></button>
 {% endfor %}
 <br><br><br>
 <button><a href="{% url 'NewBotin'%}">Agregar mas Botines</a></button>

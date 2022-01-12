@@ -1,0 +1,17 @@
+{% extends "Appfinal/padre.html" %}
+{ load static  }
+
+
+{% block contenido %}
+
+<form method="post">  {% csrf_token %}
+                           
+    Estás seguro de que querés eliminar este producto:  "{{ object.tipo }}" ?
+    <input type="submit" value="ELIMINAR" />
+</form>
+
+<button>
+    <a href="{% url 'ListAcc' %}">REGRESAR</a>
+        
+</button> 
+{% endblock %}

@@ -10,6 +10,8 @@
 <li>{{ i.tipo }}
 </li>
 <button><a href="{% url 'Remeras' i.id %}">Ver Mas</a></button>
+<button><a href="{% url 'EditRem' i.id %}">Editar</a></button>
+<button><a href="{% url 'DeleteRem' i.id %}">Eliminar</a></button>
 {% endfor %}
 <br><br><br>
 <button><a href="{% url 'NewRem'%}">Agregar mas remeras</a></button>

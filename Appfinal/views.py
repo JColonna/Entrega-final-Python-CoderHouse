@@ -12,7 +12,6 @@ from Appfinal.models import Indumentaria
 from Appfinal.forms import UserRegisterForm, UserEditForm
 
 # Create your views here.
-
 def index(request):
 
     return render(request, 'Appfinal/padre.html')
@@ -116,12 +115,49 @@ class AccesoriosUpdate(UpdateView):
       model = Accesorios
       success_url = "../accesorios/list"
       fields = ['tipo','talle', 'stock', 'precio'] 
+class ZapatillasUpdate(UpdateView):
+
+      model = ZapatillasDeportivas
+      success_url = "../zapatillas/list"
+      fields = ['tipo','talle', 'stock', 'precio'] 
+class BotinesUpdate(UpdateView):
+
+      model = Botines
+      success_url = "../botines/list"
+      fields = ['tipo','talle', 'stock', 'precio'] 
+class PantalonesUpdate(UpdateView):
+
+      model = Pantalones
+      success_url = "../pantalones/list"
+      fields = ['tipo','talle', 'stock', 'precio'] 
+class RemerasUpdate(UpdateView):
+
+      model = Remeras
+      success_url = "../remeras/list"
+      fields = ['tipo','talle', 'stock', 'precio'] 
 
 #Eliminar
+
 class AccesoriosDelete(DeleteView):
 
       model = Accesorios
       success_url = "../accesorios/list"
+class ZapatillasDelete(DeleteView):
+
+      model = ZapatillasDeportivas
+      success_url = "../zapatillas/list"
+class RemerasDelete(DeleteView):
+
+      model = Remeras
+      success_url = "../remeras/list"
+class BotinesDelete(DeleteView):
+
+      model = Botines
+      success_url = "../botines/list"
+class PantalonesDelete(DeleteView):
+
+      model = Pantalones
+      success_url = "../pantalones/list"
 
 #Login edit y register 
 def register(request):
