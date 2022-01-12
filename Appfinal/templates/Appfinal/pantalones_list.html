@@ -9,7 +9,7 @@
 {% for i in object_list%}
 <li>{{ i.tipo }}
 </li>
-<button><a href="{% url 'Pantalones' i.id %}"></a>Ver Mas</button>
+<button><a href="{% url 'Pantalones' i.id %}">Ver Mas</a></button>
 <button><a href="{% url 'EditPant' i.id %}">Editar</a></button>
 <button><a href="{% url 'DeletePant' i.id %}">Eliminar</a></button>
 {% endfor %}
