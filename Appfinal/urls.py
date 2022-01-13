@@ -8,6 +8,7 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('index', views.index, name='Index'),
+    path('nosotros', views.nosotros, name='Nosotros'),
     path('contacto', views.formularioContacto, name='Contacto'),
     path('confirmacion', views.confirmacionContacto, name='Confirmacion'),
     path('tiendavirtual', views.tiendaVirtual, name="Tienda"),
@@ -39,7 +40,8 @@ urlpatterns = [
     path('register', views.register, name='Register' ),
     path('login', views.login_request, name='Login'),
     path('logout', LogoutView.as_view(template_name="Appfinal/logout.html"), name="Logout"),
-    path('editarperfil', views.editarPerfil, name='EditarPerfil')
+    path('editarperfil', views.editarPerfil, name='EditarPerfil'),
+    path('agregaravatar', views.agregarAvatar, name="AgregarAvatar")
 
     
 

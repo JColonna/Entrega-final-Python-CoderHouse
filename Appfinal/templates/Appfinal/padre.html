@@ -30,12 +30,13 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Tienda' %}">  Nuestros <br>Productos</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Nosotros</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Nosotros' %}">Nosotros</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Contacto' %}">Contacto</a></li>
                         
                         {% if request.user.is_authenticated %}
                         
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >Hola <br>{{user}}!!!</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><p class="nav-link py-3 px-0 px-lg-3 rounded" >Hola <br>{{user}}!!!</p>  </li>
+                        <img height= "55px" src="{{ avatar }}" alt="">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EditarPerfil' %}">Editar <br> Perfil</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Logout' %}">Logout</a></li>
                         {% else %}
@@ -66,7 +67,10 @@
                 <p class="masthead-subheading font-weight-light mb-0">Toda tu indumentaria, en un solo lugar.</p>
             </div>
         </header>
+        
         {% block contenido %}
+          
+      
 
         {% endblock %}
                 <!-- Footer-->

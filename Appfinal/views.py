@@ -1,8 +1,8 @@
 from django.forms.forms import Form
 from django.shortcuts import render
 from Appfinal import forms
-from Appfinal.models import FormularioContacto, Accesorios, ZapatillasDeportivas,Pantalones,Botines,Remeras
-from Appfinal.forms import FormularioContact
+from Appfinal.models import Avatar, FormularioContacto, Accesorios, ZapatillasDeportivas,Pantalones,Botines,Remeras
+from Appfinal.forms import FormularioContact, AvatarFormulario
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, logout, authenticate
@@ -10,11 +10,29 @@ from Appfinal.forms import UserRegisterForm
 from django. contrib.auth.decorators import login_required
 from Appfinal.models import Indumentaria
 from Appfinal.forms import UserRegisterForm, UserEditForm
+from django.contrib.auth.models import User
 
 # Create your views here.
+def nosotros(request):
+    return render(request,'Appfinal/nosotros.html')
 def index(request):
+       
+    diccionario = {}
+    cantidadDeAvatares = 0
+    
+    if request.user.is_authenticated:
+        avatar = Avatar.objects.filter( user = request.user.id)
+        
+        for a in avatar:
+            cantidadDeAvatares = cantidadDeAvatares + 1
+    
+    
+        diccionario["avatar"] = avatar[cantidadDeAvatares-1].imagen.url
 
-    return render(request, 'Appfinal/padre.html')
+    #return HttpResponse("Esto es una prueba del inicio")
+  
+
+    return render(request, 'Appfinal/padre.html', diccionario)
 
 def formularioContacto(request):
     if request.method == "POST":
@@ -220,3 +238,25 @@ def editarPerfil(request):
 
    return render (request, "Appfinal/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario}) 
 
+@login_required
+def agregarAvatar(request):
+      if request.method == 'POST':
+
+            miFormulario = AvatarFormulario(request.POST, request.FILES) 
+
+            if miFormulario.is_valid():   
+
+
+                  u = User.objects.get(username=request.user)
+                
+                  avatar = Avatar (user=u, imagen=miFormulario.cleaned_data['imagen']) 
+      
+                  avatar.save()
+
+                  return render(request, "Appfinal/padre.html") 
+
+      else: 
+
+            miFormulario= AvatarFormulario() 
+
+      return render(request, "Appfinal/agregarAvatar.html", {"miFormulario":miFormulario})
