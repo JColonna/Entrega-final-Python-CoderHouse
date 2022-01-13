@@ -2,7 +2,7 @@ from django.forms.forms import Form
 from django.shortcuts import render
 from Appfinal import forms
 from Appfinal.models import Avatar, FormularioContacto, Accesorios, ZapatillasDeportivas,Pantalones,Botines,Remeras
-from Appfinal.forms import FormularioContact, AvatarFormulario
+from Appfinal.forms import Contacto, AvatarFormulario
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, logout, authenticate
@@ -11,6 +11,8 @@ from django. contrib.auth.decorators import login_required
 from Appfinal.models import Indumentaria
 from Appfinal.forms import UserRegisterForm, UserEditForm
 from django.contrib.auth.models import User
+
+
 
 # Create your views here.
 def nosotros(request):
@@ -36,10 +38,10 @@ def index(request):
 
 def formularioContacto(request):
     if request.method == "POST":
-      miFormulario = FormularioContact(request.POST)
+      miFormulario= Contacto(request.POST)
       if miFormulario.is_valid():
-          informacion = miFormulario.cleaned_data
-          cliente = FormularioContacto(
+        informacion= miFormulario.cleaned_data
+        cliente = FormularioContacto(
 
               nombre = informacion["nombre"],
               apellido = informacion["apellido"],
@@ -48,12 +50,12 @@ def formularioContacto(request):
               consulta = informacion["consulta"])
 
           
-          cliente.save()
-          return render(request, 'Appfinal/padre.html')
+        cliente.save()
+        return render(request, 'Appfinal/inicio.html')
     else: 
-        miFormulario = FormularioContacto()
+        miFormulario = Contacto()
     
-    return render(request, 'Appfinal/formularioContacto.html')
+    return render(request, "Appfinal/formularioContacto.html", {"miFormulario": miFormulario})
 
 def confirmacionContacto(request):
 
@@ -100,6 +102,7 @@ class AccesoriosDetalle(DetailView):
     template_name = 'Appfinal/accesorios_detail.html'
 
 #Crear 
+
 class AccesorioCreate(CreateView):
 
     model = Accesorios
@@ -184,7 +187,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             form.save()
-            return render(request, 'Appfinal/confirmacionRegistro.html', {"mesanje": f'Felicitaciones, su usuario: {username} ha sido creado exitosamente, toque el boton para iniciar sesion.' })
+            return render(request, 'Appfinal/confirmacionRegistro.html')
     else:
         form = UserRegisterForm()
 

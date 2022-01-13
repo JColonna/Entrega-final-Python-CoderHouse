@@ -9,12 +9,16 @@
 {% for i in object_list%}
 <li>{{ i.tipo }}
 </li>
+{% if request.user.is_authenticated %}
 <button><a href="{% url 'Pantalones' i.id %}">Ver Mas</a></button>
 <button><a href="{% url 'EditPant' i.id %}">Editar</a></button>
+{% endif %}
 <button><a href="{% url 'DeletePant' i.id %}">Eliminar</a></button>
 {% endfor %}
 <br><br><br>
+{% if request.user.is_authenticated %}
 <button><a href="{% url 'NewPan'%}">Agregar mas Pantalones</a></button>
+{% endif%}
 <br>
 
 <br>

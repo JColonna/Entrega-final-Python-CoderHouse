@@ -10,11 +10,15 @@
 <li>{{ i.tipo }}
 </li>
 <button><a href="{% url 'Zapatillas' i.id %}">Ver Mas</a></button>
+{% if request.user.is_authenticated %}
 <button><a href="{% url 'EditZapas' i.id %}">Editar</a></button>
 <button><a href="{% url 'DeleteZap' i.id %}">Eliminar</a></button>
+{% endif %}
 {% endfor %}
 <br><br><br>
+{% if request.user.is_authenticated %}
 <button><a href="{% url 'NewZapas'%}">Agregar mas zapatillas</a></button>
+{% endif%}
 <br>
 
 <br>

@@ -5,12 +5,18 @@
 {% block contenido %}
 <form action="/Appfinal/confirmacion" method="POST">
     {%csrf_token %}
-<p>Nombre:   <input type="text" name="nombre">    </p>
+<!--<p>Nombre:   <input type="text" name="nombre">    </p>
 <p>Apellido: <input type="text" name="apellido">  </p>
 <p>Email:    <input type="text" name="email">     </p>
 <p>Telefono: <input type="number" name="telefono"></p>
-<p>Consulta: <input type="text" name="consulta">  </p>
+<p>Consulta: <input type="text" name="consulta">  </p>-->
 
+<table>
+
+    {{  miFormulario.as_table  }}
+
+
+    </table>
 
     
 <input type="submit" value="Enviar">
@@ -19,3 +25,6 @@
 
 
 {% endblock %}
+
+
+
